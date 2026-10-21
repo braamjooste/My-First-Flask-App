@@ -33,3 +33,12 @@ Open `http://127.0.0.1:5000` in your browser.
 This is a basic Flask application generated with assistance from ChatGPT. I reviewed the code and tested the homepage and About page locally.
 
 The project uses a virtual environment, which is excluded from GitHub using `.gitignore`.
+## Project Idea – Simple Stock and Ordering App
+
+If I had an evening instead of a quarter to build an application, I would create a simple stock and ordering system for a small business.
+
+The idea would be to allow staff to select products from a predefined list, enter the quantities they need and generate an order. Products could be grouped into categories, making it easier to find what they need without having to type everything out each time.
+
+I would start with a basic Flask application, keeping the interface simple and avoiding unnecessary features. The first version wouldn't need a complicated database or supplier integration. It could use a small sample product list and display the completed order on screen.
+
+The aim would be to reduce repetitive work and make ordering quicker and more consistent. If the basic version worked well, I could expand it later to include stock levels, suppliers and pricing comparisons.
