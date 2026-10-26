@@ -25,10 +25,10 @@ Open Git Bash in the project folder and run:
 python -m venv .venv
 source .venv/Scripts/activate
 python -m pip install -r requirements.txt
-python app.py
+python -m flask --app app run --port 5055
 ```
 
-Open `http://127.0.0.1:5000` in your browser.
+Open `http://127.0.0.1:5055` in your browser.
 
 ## Notes
 
@@ -58,22 +58,23 @@ Only Flask is required in addition to the Python standard library.
 The existing homepage and About page are retained. The contact form and confirmation
 use a 1970s cream, orange, mustard, olive and chocolate colour scheme.
 
-### Run in Windows PowerShell
+### Run in Git Bash on Windows
 
-```powershell
+```bash
 py -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
-.\.venv\Scripts\python.exe -m flask --app app run --port 5055
+source .venv/Scripts/activate
+python -m pip install -r requirements.txt
+python -m flask --app app run --port 5055
 ```
 
 Open http://127.0.0.1:5055/contact. Port 5055 avoids the other local app previously
 using port 5000. Press Ctrl+C to stop. If `py` is unavailable, use `python` for
-the first command. No virtual-environment activation is needed for these commands.
+the first command. Activate the virtual environment again when opening a new Git Bash terminal.
 
 ### Automated checks
 
-```powershell
-.\.venv\Scripts\python.exe -m unittest discover -s tests -v
+```bash
+python -m unittest discover -s tests -v
 ```
 
 ### Manual checks
