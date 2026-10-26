@@ -157,6 +157,35 @@ browser simulation, and the external font/script references. Passing a syntax ch
 does not establish that an application starts or behaves correctly over HTTP.
 The full executable scripts used by the separate review are not included here.
 
+## Screenshots of my application
+
+These screenshots show the form, an invalid email response and the separate
+confirmation page. I have saved the original files in docs/screenshots/.
+
+### 1. The contact form
+
+The form at /contact shows the three required fields and the 1970s colour scheme.
+
+![Contact form with name, email and message fields](screenshots/contact1.png)
+
+### 2. Invalid email and preserved input
+
+The email error is displayed beside the field, while the entered name and message
+remain in the form.
+
+![Invalid email error with the entered values preserved](screenshots/contact2.png)
+
+### 3. Successful submission
+
+A valid submission leads to a separate confirmation page, which explains that
+the message is not saved or emailed.
+
+![Confirmation page after successful validation](screenshots/contact3.png)
+
+These images support the visible behaviour described in the comparison. The
+automated tests provide the separate evidence for HTTP responses and validation
+when browser checks are bypassed.
+
 ## What each version got wrong
 
 ### ChatGPT / Codex
