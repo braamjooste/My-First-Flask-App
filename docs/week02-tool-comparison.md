@@ -1,46 +1,46 @@
 # Week 2 - AI Tool Comparison
 
-Status: COMPARISON WRITE-UP, ALL THREE PROMPTS AND SUPPLIED CODE OUTPUTS ARCHIVED.
-Execution and revision-history limits are documented below rather than treated as
-completed checks.
+I compared contact-form code from ChatGPT, Claude and Gemini. I used the class example
+prompt for Claude and Gemini, but my ChatGPT prompt was much more detailed. I had also
+worked through changes to the ChatGPT version, so these were not three identical
+first attempts.
 
 ## The requirement
 
-Add a beginner-friendly Flask contact form at /contact with name, email and message.
-Validate on the server, reject missing or whitespace-only fields and malformed email,
-return HTTP 400 with clear errors and preserved values, and display a separate
-confirmation after success. Use Flask and Python's standard library only. Store and
-log no submitted values, use no sessions for them, send no email, and perform no
-external-service or mailbox-existence checks.
+The task was to add a contact form at /contact to a Flask application, with fields
+for name, email and message. Validation had to happen on the server. Empty or
+whitespace-only fields and malformed email addresses should be rejected with HTTP 400,
+clear errors and the entered values preserved. A valid submission should display a
+separate confirmation page.
 
-## Versions and evidence
+The session sheet also required Flask and Python's standard library only, with no
+storage, logging of submitted values, sessions for those values, email sending or
+external services. The email check should validate the format without checking
+whether the mailbox exists.
 
-The user confirmed using ChatGPT/Codex, Claude and Gemini. The ChatGPT prompt was more
-comprehensive than the prompts used for the other two assistants.
+## What I compared
 
-The user supplied a separate comparison report on 26 October 2026. It is preserved
-[verbatim here](week02-comparison-report.md). Its evaluator reportedly inspected all
-three implementations. The user has now supplied the exact shared prompt and original
-code outputs for Claude and Gemini. Both are archived without corrections:
+I saved the original Claude and Gemini outputs without correcting them:
 
-- [Claude original server.js](../experiments/week02/claude/server.js)
-- [Gemini original contact.html](../experiments/week02/gemini/contact.html)
+- [Claude server.js](../experiments/week02/claude/server.js)
+- [Gemini contact.html](../experiments/week02/gemini/contact.html)
 
-The detailed scores and runtime results below remain attributed to the supplied
-report. Later local work inspected the original source and checked JavaScript syntax;
-it did not repeat the evaluator's full test suite.
+The ChatGPT version is the revised Flask application at the root of this repository.
+It includes the later debugging, 1970s styling and integration with my existing home
+and About pages. An earlier version is saved under
+experiments/week02/codex/snapshot-before-lab-correction/. That snapshot already
+includes changes, so I have not labelled it as an untouched first answer.
 
-ChatGPT's selected implementation is the current revised application at the repository
-root. It includes later debugging, 1970s styling, home/About integration and removal of
-email-validator. The older iterated snapshot is preserved under
-experiments/week02/codex/snapshot-before-lab-correction/. It is not an unmodified first
-answer. Claude/Gemini revision histories remain unknown.
+I also saved the [comparison report](week02-comparison-report.md). The scores below
+come from that review. I have kept its reported test results separate from the test
+reports saved with my project, because the full review test suite was not repeated
+locally. I do not have a complete revision history for the Claude and Gemini versions.
 
 ## Prompts used
 
 ### ChatGPT / Codex
 
-The original request is also saved in
+This is my original ChatGPT prompt, also saved in
 [experiments/week02/codex/prompt.txt](../experiments/week02/codex/prompt.txt).
 
 ```text
@@ -75,39 +75,39 @@ Before presenting the final code, review it against every requirement and correc
 If I later provide an error message or failed test, use that feedback to refine the solution and supply the complete corrected files.
 ```
 
-This prompt did not state the session sheet's Flask-and-standard-library-only
-restriction; that constraint was introduced later and the dependency was corrected.
+I had not included the session sheet's Flask-and-standard-library-only restriction
+in this prompt. That was added later, and the extra email-validator dependency
+was replaced with Python's re module.
 
-### Claude and Gemini - same class-example prompt
+### Claude and Gemini
 
-The user confirmed that both assistants received the following prompt. Its wording,
-including "service side", is preserved verbatim. It is also saved separately in
-[Claude's prompt file](../experiments/week02/claude/prompt.txt) and
-[Gemini's prompt file](../experiments/week02/gemini/prompt.txt).
+I used the same class-example prompt for both. I have kept the original wording,
+including "service side", in the saved prompt files for
+[Claude](../experiments/week02/claude/prompt.txt) and
+[Gemini](../experiments/week02/gemini/prompt.txt).
 
 ```text
 please create a Web application. A contact form that’s rendered at/contact I want fields for name email and message I want you to validate the email address is a valid format. Validation needs to be done service side. If any field is empty I want you to reject it and return giving the error message as to what is missing. If it’s successful then display a confirmation message. No need to store any data at the moment.
 ```
 
-This prompt asks for a web application and validation "service side", but it does not
-name Flask or Python, specify HTTP 400, require a separate confirmation page, or state
-the Flask-and-standard-library-only restriction. Express therefore misses the common
-Flask lab target without necessarily contradicting the actual prompt given to Claude.
-The review's browser-only simulation would still not meet the likely intended
-server-side validation request; the original wording and missing raw source limit
-that conclusion. Preserve the original generated code before making corrections.
+This shorter prompt did not specify Flask or Python, HTTP 400 responses, a separate
+confirmation page, or the restriction on extra packages. That helped explain why
+Claude produced an Express application. It did not match the common Flask lab
+requirement, but I had not told Claude which framework to use.
 
-Different prompts and revision histories prevent a controlled comparison of assistant
-quality. The present comparison evaluates the supplied implementations against a common
-lab target. A mismatch with that target does not establish that an assistant ignored
-the prompt it actually received.
+Gemini's browser-only simulation was a different issue: the intended request was for
+server-side validation, but its validation function still ran in the browser.
+
+Because the prompts and revision histories differed, I am comparing how well these
+particular implementations fit the lab. I cannot use this comparison to conclude
+that one assistant is always better than another.
 
 ## Scores and evidence
 
-The following scores are the supplied evaluator's assessment, not newly executed
-scores in this repository. They apply to the current ChatGPT revision and the
-Claude/Gemini versions described in the report. Security scores concern this lab's
-scope, not a general security guarantee.
+These scores are from the saved comparison report. They apply to the revised
+ChatGPT application and the Claude/Gemini files linked above. The security scores
+are for the requirements of this beginner lab, not a claim that the applications
+have passed a full production security review.
 
 | Criterion (1-5) | ChatGPT revised | Claude, revision unknown | Gemini, revision unknown |
 |---|---|---|---|
@@ -116,113 +116,122 @@ scope, not a general security guarantee.
 | Completeness | 5 - Supplies all five runnable application files and a separate confirmation. | 2 - The reported implementation uses Express rather than Flask and lacks a dependency manifest. | 1 - The reported implementation lacks the required backend and separate confirmation page. |
 | Security | 5 - Server checks, escaped output and debug-off settings satisfy the reported lab checks. | 3 - Escaping and server handlers are present, but validation gaps and external fonts remain. | 2 - Browser-only validation is bypassable and external scripts/fonts violate the common target. |
 
-The report also treats home/About routes as extra complexity. Those routes already
-existed in the user's application; preserving them was part of the later integration.
-Their presence is not an implementation defect or unrelated generated feature.
+The report counted my home and About routes as extra complexity. Those pages were
+already in my application, and I wanted to keep them when adding the contact form.
 
-## Verification record
+## Checks and results
 
-### Independently verified during the project work
+### Test reports saved with my project
 
-- Nine tests passed in the selected integrated app and in the original local project.
-  See [saved test report](week02-selected-tests.txt).
-- Seven original tests passed in the recovered pre-correction snapshot.
-  See [snapshot report](week02-snapshot-tests.txt).
-- The source and extracted YAML export passed the same nine selected-app tests.
-- Earlier live UI testing exercised empty input, malformed email, preserved values,
-  valid confirmation and the return link. This preceded the later regex correction.
-- The specific manual DevTools exercise and mobile/screen-reader testing remain
-  unrecorded. Direct Flask requests did bypass browser validation.
+- The selected Flask application passed nine automated checks, including the home
+  and About pages, validation, preserved input, script escaping and confirmation.
+  The results are in [week02-selected-tests.txt](week02-selected-tests.txt).
+- The earlier saved version passed its seven original checks. The results are in
+  [week02-snapshot-tests.txt](week02-snapshot-tests.txt).
+- The code extracted from the YAML export also passed the nine selected-app checks.
+- The form was checked in the browser for empty input, malformed email, preserved
+  values, confirmation and the return link. These browser checks took place before
+  the later email-regex change.
+- Direct Flask POST requests bypassed browser validation. The specific DevTools
+  exercise of deleting required attributes, mobile testing and screen-reader
+  testing were not recorded.
 
-### Reported by the separate comparison evaluator
+### Checks described in the comparison report
 
-- Seventeen Flask test-client cases reportedly ran without expected-status failures.
-  This is the evaluator's report, not a claim that seventeen tests were run here.
-- Claude JavaScript reportedly passed syntax checks and isolated handler checks.
-  Express installation failed, so actual startup and HTTP integration were unverified.
-- Gemini's simulated validation helper reportedly ran in isolation; this was not a
-  backend test.
-- The evaluator reported browser rendering of Flask-produced HTML offline. Live
-  browser-to-server navigation was blocked in that environment.
-- The raw source is now archived. The evaluator's executable test scripts were not
-  supplied, so its runtime findings have not been independently reproduced here.
-- After the originals were supplied, Claude server.js and Gemini's inline JavaScript
-  both passed local syntax checks. Inspection confirmed Express routing in Claude,
-  browser-executed simulation in Gemini, and the external font/script references.
-  Syntax checks do not establish successful startup or browser-to-server behavior.
+The separate report describes seventeen Flask test-client cases without
+expected-status failures. This is a result reported by that review, rather than
+seventeen additional tests recorded in my local project.
 
-## What each implementation got wrong
+The review also checked Claude's syntax and exercised its handlers in isolation.
+Express installation failed in that environment, so full startup and HTTP
+integration were not verified. Gemini's simulated validation helper was checked
+separately, but that was not a real backend test.
+
+Live browser-to-server navigation was blocked in the review environment. It rendered
+the Flask-generated HTML offline instead. I have not treated that environment
+restriction as a defect in the application.
+
+After saving the original Claude and Gemini files, local JavaScript syntax checks
+passed for both. Source inspection also confirmed Claude's Express routes, Gemini's
+browser simulation, and the external font/script references. Passing a syntax check
+does not establish that an application starts or behaves correctly over HTTP.
+The full executable scripts used by the separate review are not included here.
+
+## What each version got wrong
 
 ### ChatGPT / Codex
 
-The earlier recovered snapshot used email-validator, outside the session dependency
-constraint. The selected revision corrects that using re. The contact form initially
-lived in LOWCODE rather than the original application; the selected revision now
-preserves home/About and adds /contact. The current regex is a practical ASCII format
-check and does not claim complete email-standard coverage.
+The earlier version added email-validator, which was outside the session's package
+restriction. The revised app uses re instead. The contact form also initially lived
+in the separate LOWCODE folder; it was later added to my original application while
+keeping the home and About pages.
 
-### Claude - findings reported by the evaluator
+The current email expression is a practical check for ordinary ASCII addresses.
+It is not intended to cover every unusual email format in the standards.
 
-- Express/Node does not meet the common Flask requirement.
+### Claude
+
+The comparison report identified these issues:
+
+- It uses Express/Node rather than the Flask stack required by the lab.
 - No dependency manifest was included.
-- Some malformed local-part dot placements were accepted.
-- Submitted values were trimmed before redisplay rather than exactly preserved.
-- Google Fonts introduced an external asset request.
-- A separate success document was returned directly to POST, so refreshing may repeat
-  the POST or show a browser resubmission prompt.
+- The email expression accepts some malformed dot placements.
+- Input is trimmed before being displayed again, so surrounding whitespace is lost.
+- Google Fonts introduces an external request.
+- Success HTML is returned directly from POST, so refreshing may repeat the
+  submission or trigger a browser resubmission prompt.
 
-Returning a separate document from POST is not, by itself, failure to show a separate
-confirmation page. The 303 redirect used in the selected app is a refresh improvement
-and should not be retroactively treated as an explicit lab requirement.
+Claude does provide a separate success document. Returning it directly from POST
+does not automatically fail that requirement. The 303 redirect in the Flask version
+improves refresh behaviour, but a redirect was not explicitly required by the lab.
 
-### Gemini - findings reported by the evaluator
+### Gemini
 
-- The implementation simulated a server in browser JavaScript instead of supplying
-  a real Flask backend.
-- A JavaScript property such as status: 400 did not produce an HTTP 400 response.
-- Success appeared inline rather than on a separate confirmation page.
-- External Tailwind/Lucide scripts and Google Fonts did not meet the no-external-services
-  target.
-- The helper accepted malformed dot placement despite a claim of RFC compliance.
+The comparison report identified these issues, and the archived source shows the
+browser-only structure:
 
-The report did not demonstrate a user-input-to-HTML injection path in Gemini.
-Accepting script characters as message text is not itself a security defect; executing
-them when rendering user input would be the defect.
+- The code simulates a server in browser JavaScript instead of providing a real backend.
+- Its status: 400 property does not set an actual HTTP response status.
+- Success appears in a banner on the form rather than on a separate confirmation page.
+- Tailwind, Lucide and Google Fonts are loaded from external services.
+- The email expression accepts malformed dot placement despite its comment claiming
+  RFC compliance.
+
+The report did not find a demonstrated path where Gemini inserts submitted input
+as executable HTML. Accepting characters such as script tags in a message is not
+itself the security problem; executing them when displaying the input would be.
 
 ## Which I kept, and why
 
-Keep the current revised ChatGPT/Codex implementation because it meets the requested
-Flask stack, independently verified server validation and error handling, preserved
-input, escaped output, and separate confirmation without submitted-value storage.
-The external review supports that choice for these particular code versions.
+I kept the revised ChatGPT/Codex version because it fits my existing Flask application
+and meets the contact-form requirements. The saved checks show server validation,
+HTTP 400 errors, preserved values, escaped output and a separate confirmation page,
+without storing or emailing the message.
 
-This is a decision about code fitness for this assignment. It is not evidence that
-ChatGPT generally outperforms Claude or Gemini: the prompts differed and only ChatGPT's
-revision status is known.
+I also kept the changes that preserve my existing pages and removed the extra
+dependency. My choice is based on how well this version fits the assignment,
+rather than just its appearance or the name of the assistant.
 
-## One supported finding to discuss
+## What surprised me
 
-The supplied review found that the Gemini version used a function named
-mockServerContactEndpoint and a status: 400 property, but both operated in the browser.
-That naming could suggest server validation even though no real server route or HTTP
-error response existed. The archived Gemini source now allows this structural finding
-to be checked directly: the form listener calls the function in the same inline script
-and there is no network submission. This is source inspection, not a live backend test.
+Gemini's code had a function called mockServerContactEndpoint and returned a
+status: 400 property. At first glance, that looked like server-side validation.
+However, the form listener called the function inside the same browser script,
+with no network submission or real HTTP error response.
 
-## Saved coursework evidence
+This was the main lesson for me: names and comments can make code look convincing,
+but I still need to check where it runs and what it actually does.
 
-The following are now saved and committed:
+## Files I saved
 
-- The exact prompts for ChatGPT/Codex, Claude and Gemini.
-- The selected revised Flask application and its independently verified nine-test report.
-- The recovered earlier Codex snapshot, labeled as iterated rather than raw first output.
-- The original Claude server.js and Gemini contact.html as supplied, without fixes.
-- The supplied comparison report, scores, evidence, verification limits and reasoned choice.
+My repository contains:
 
-The user has confirmed completing the Block A readings/videos. A supplied screenshot
-shows the three Block A answers posted on 21 October before the session. The user
-also confirmed using both Claude and Gemini.
+- The exact prompts used with ChatGPT, Claude and Gemini.
+- The revised Flask application and its nine-test report.
+- The earlier ChatGPT snapshot, labelled as a version that already includes changes.
+- The original Claude server.js and Gemini contact.html, without corrections.
+- The comparison report, scores, supporting evidence and reasons for my choice.
 
-Claude/Gemini revision histories and first-time-success outcomes remain unknown.
-The evaluator's full test scripts and live Express integration have not been supplied
-or independently rerun. These are evidence limits, not invented successful checks.
+I completed the Block A readings and videos and posted my three Block A answers
+on 21 October before the session. Keeping the prompts and original outputs alongside
+the final application makes it easier to explain what changed and why I chose it.
