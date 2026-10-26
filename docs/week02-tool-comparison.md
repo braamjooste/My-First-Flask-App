@@ -1,7 +1,8 @@
 # Week 2 - AI Tool Comparison
 
-Status: COMPARISON FINDINGS AND ALL THREE PROMPTS RECORDED; original Claude/Gemini
-code files still need to be archived before the evidence record is complete.
+Status: COMPARISON WRITE-UP, ALL THREE PROMPTS AND SUPPLIED CODE OUTPUTS ARCHIVED.
+The Block B forum post is still outstanding. Execution and revision-history limits
+are documented below rather than treated as completed checks.
 
 ## The requirement
 
@@ -19,9 +20,15 @@ comprehensive than the prompts used for the other two assistants.
 
 The user supplied a separate comparison report on 26 October 2026. It is preserved
 [verbatim here](week02-comparison-report.md). Its evaluator reportedly inspected all
-three implementations. The raw Claude/Gemini source has not yet been provided to this
-repository. The user has now supplied the exact shared prompt used for both tools. Findings about those two implementations
-below are attributed to that report, not independently reproduced here.
+three implementations. The user has now supplied the exact shared prompt and original
+code outputs for Claude and Gemini. Both are archived without corrections:
+
+- [Claude original server.js](../experiments/week02/claude/server.js)
+- [Gemini original contact.html](../experiments/week02/gemini/contact.html)
+
+The detailed scores and runtime results below remain attributed to the supplied
+report. Later local work inspected the original source and checked JavaScript syntax;
+it did not repeat the evaluator's full test suite.
 
 ChatGPT's selected implementation is the current revised application at the repository
 root. It includes later debugging, 1970s styling, home/About integration and removal of
@@ -137,8 +144,12 @@ Their presence is not an implementation defect or unrelated generated feature.
   backend test.
 - The evaluator reported browser rendering of Flask-produced HTML offline. Live
   browser-to-server navigation was blocked in that environment.
-- Raw third-party source and executable test scripts were not supplied here, so those
-  findings have not been independently reproduced in this repository.
+- The raw source is now archived. The evaluator's executable test scripts were not
+  supplied, so its runtime findings have not been independently reproduced here.
+- After the originals were supplied, Claude server.js and Gemini's inline JavaScript
+  both passed local syntax checks. Inspection confirmed Express routing in Claude,
+  browser-executed simulation in Gemini, and the external font/script references.
+  Syntax checks do not establish successful startup or browser-to-server behavior.
 
 ## What each implementation got wrong
 
@@ -194,21 +205,31 @@ revision status is known.
 The supplied review found that the Gemini version used a function named
 mockServerContactEndpoint and a status: 400 property, but both operated in the browser.
 That naming could suggest server validation even though no real server route or HTTP
-error response existed. The underlying code should be archived before presenting this
-finding as personally reproduced.
+error response existed. The archived Gemini source now allows this structural finding
+to be checked directly: the form listener calls the function in the same inline script
+and there is no network submission. This is source inspection, not a live backend test.
 
-## Remaining evidence and coursework
+## Completion record and remaining coursework
 
-1. Save the unmodified Claude and Gemini generated code in the named experiment
-   folders, preserving any separate revised versions. Their exact prompts are now saved.
-2. Record first-attempt outcomes and revision histories where known; do not reconstruct
-   missing history as fact.
-3. Add the evaluator's test scripts/results if available, or independently reproduce
-   the third-party checks when the actual source is supplied.
-4. Confirm the Week 1 prompt rerun/difference required by Block A; using three assistants
-   alone does not establish that this specific exercise was completed.
-5. Post a supported difference to the course forum for Block B. The user has confirmed
-   that this post is not yet done.
+The following are now saved and committed:
+
+- The exact prompts for ChatGPT/Codex, Claude and Gemini.
+- The selected revised Flask application and its independently verified nine-test report.
+- The recovered earlier Codex snapshot, labeled as iterated rather than raw first output.
+- The original Claude server.js and Gemini contact.html as supplied, without fixes.
+- The supplied comparison report, scores, evidence, verification limits and reasoned choice.
 
 The user has confirmed completing the Block A readings/videos. A supplied screenshot
-also shows the three Block A answers posted on 21 October before the session.
+shows the three Block A answers posted on 21 October before the session. The user
+also confirmed using both Claude and Gemini.
+
+### Still outstanding
+
+1. Post one supported finding to the course forum for Block B. The user confirms this
+   has not yet been done; no forum post has been sent by this assistant.
+2. Confirm whether the Week 1 prompt was rerun on another assistant and one difference
+   was noted, as Block A specifically asks. This remains unconfirmed.
+
+Claude/Gemini revision histories and first-time-success outcomes remain unknown.
+The evaluator's full test scripts and live Express integration have not been supplied
+or independently rerun. These are evidence limits, not invented successful checks.

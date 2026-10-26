@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - /contact</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between antialiased">
+
+    <!-- Header / Navigation Bar -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo / Brand -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-9 h-9 bg-indigo-600 text-white rounded-lg flex items-center justify-center font-bold text-lg shadow-sm">
+                        <i data-lucide="mail-check" class="w-5 h-5"></i>
+                    </div>
+                    <span class="font-semibold text-slate-900 text-lg">ContactApp</span>
+                </div>
+
+                <!-- Simulated Route Display -->
+                <div class="flex items-center space-x-2 bg-slate-100 border border-slate-200 px-3 py-1.5 rounded-full text-xs font-mono text-slate-600">
+                    <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span>Route:</span>
+                    <strong class="text-indigo-600 font-bold">/contact</strong>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow flex items-center justify-center p-4 sm:p-6 lg:p-8">
+        <div class="w-full max-w-xl bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden">
+            
+            <!-- Card Header -->
+            <div class="bg-gradient-to-r font-sans from-slate-900 to-indigo-950 p-6 sm:p-8 text-white">
+                <div class="flex items-center space-x-2 text-indigo-400 text-xs font-semibold tracking-wider uppercase mb-2">
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                    <span>Get In Touch</span>
+                </div>
+                <h1 class="text-2xl sm:text-3xl font-bold tracking-tight">Contact Us</h1>
+                <p class="text-slate-300 text-sm mt-1">We'd love to hear from you. Send us a message below.</p>
+            </div>
+
+            <!-- Form Body -->
+            <div class="p-6 sm:p-8">
+
+                <!-- Global Server Response Notification Banner -->
+                <div id="response-banner" class="hidden mb-6 p-4 rounded-xl border text-sm transition-all duration-300 flex items-start space-x-3">
+                    <div id="response-icon" class="mt-0.5 flex-shrink-0"></div>
+                    <div class="flex-grow">
+                        <h4 id="response-title" class="font-semibold text-base mb-0.5"></h4>
+                        <ul id="response-message-list" class="list-disc list-inside text-sm space-y-1"></ul>
+                    </div>
+                </div>
+
+                <form id="contactForm" class="space-y-5" novalidate>
+                    
+                    <!-- Name Field -->
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-slate-700 mb-1">
+                            Full Name <span class="text-rose-500">*</span>
+                        </label>
+                        <div class="relative rounded-lg shadow-sm">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                                <i data-lucide="user" class="w-5 h-5"></i>
+                            </div>
+                            <input 
+                                type="text" 
+                                id="name" 
+                                name="name" 
+                                placeholder="John Doe"
+                                class="block w-full pl-10 pr-3 py-2.5 text-slate-900 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
+                            >
+                        </div>
+                        <p id="error-name" class="hidden text-xs text-rose-600 mt-1.5 flex items-center space-x-1">
+                            <i data-lucide="alert-circle" class="w-3.5 h-3.5 inline mr-1"></i>
+                            <span class="error-text"></span>
+                        </p>
+                    </div>
+
+                    <!-- Email Address Field -->
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-slate-700 mb-1">
+                            Email Address <span class="text-rose-500">*</span>
+                        </label>
+                        <div class="relative rounded-lg shadow-sm">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                                <i data-lucide="mail" class="w-5 h-5"></i>
+                            </div>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                placeholder="you@example.com"
+                                class="block w-full pl-10 pr-3 py-2.5 text-slate-900 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
+                            >
+                        </div>
+                        <p id="error-email" class="hidden text-xs text-rose-600 mt-1.5 flex items-center space-x-1">
+                            <i data-lucide="alert-circle" class="w-3.5 h-3.5 inline mr-1"></i>
+                            <span class="error-text"></span>
+                        </p>
+                    </div>
+
+                    <!-- Message Field -->
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-slate-700 mb-1">
+                            Message <span class="text-rose-500">*</span>
+                        </label>
+                        <div class="relative rounded-lg shadow-sm">
+                            <textarea 
+                                id="message" 
+                                name="message" 
+                                rows="4" 
+                                placeholder="How can we help you?"
+                                class="block w-full p-3 text-slate-900 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
+                            ></textarea>
+                        </div>
+                        <p id="error-message" class="hidden text-xs text-rose-600 mt-1.5 flex items-center space-x-1">
+                            <i data-lucide="alert-circle" class="w-3.5 h-3.5 inline mr-1"></i>
+                            <span class="error-text"></span>
+                        </p>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button 
+                        type="submit" 
+                        id="submitBtn"
+                        class="w-full bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white font-medium py-3 px-4 rounded-lg shadow-md transition-all duration-150 flex items-center justify-center space-x-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed"
+                    >
+                        <span id="btn-text">Send Message</span>
+                        <i id="btn-icon" data-lucide="send" class="w-4 h-4"></i>
+                        <!-- Spinner Icon -->
+                        <svg id="btn-spinner" class="hidden animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                    </button>
+
+                </form>
+            </div>
+
+            <!-- Card Footer: Server Log Details (Transparency feature for simulation) -->
+            <div class="bg-slate-50 border-t border-slate-100 p-4 px-6 text-xs text-slate-500 flex justify-between items-center">
+                <span>Simulated Backend Handler: <code class="bg-slate-200 text-slate-700 px-1.5 py-0.5 rounded">POST /api/contact</code></span>
+                <span class="text-emerald-600 flex items-center space-x-1 font-medium">
+                    <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full inline-block"></span>
+                    <span>Server Online</span>
+                </span>
+            </div>
+        </div>
+    </main>
+
+    <!-- Page Footer -->
+    <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-500">
+        &copy; 2026 ContactApp Inc. Rendered at <span class="font-mono text-indigo-600">/contact</span>. All rights reserved.
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        /**
+         * -----------------------------------------------------------------
+         * 1. SIMULATED SERVER-SIDE HANDLER (POST /api/contact)
+         * -----------------------------------------------------------------
+         * This function simulates a backend server endpoint process.
+         * ALL validation rules are strictly executed on the server side.
+         */
+        async function mockServerContactEndpoint(requestPayload) {
+            // Simulate network latency (600ms)
+            await new Promise(resolve => setTimeout(resolve, 600));
+
+            const { name, email, message } = requestPayload;
+            const errors = {};
+
+            // 1. Validate Name: Cannot be empty
+            if (!name || name.trim() === '') {
+                errors.name = "Name is required.";
+            }
+
+            // 2. Validate Email: Cannot be empty & Must match valid email regex
+            if (!email || email.trim() === '') {
+                errors.email = "Email address is required.";
+            } else {
+                // RFC 5322 compliant regex for robust email validation
+                const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                if (!emailRegex.test(email.trim())) {
+                    errors.email = "Please enter a valid email address.";
+                }
+            }
+
+            // 3. Validate Message: Cannot be empty
+            if (!message || message.trim() === '') {
+                errors.message = "Message is required.";
+            }
+
+            // Return response based on validation status
+            if (Object.keys(errors).length > 0) {
+                return {
+                    status: 400,
+                    success: false,
+                    message: "Validation Failed. Please correct the highlighted errors.",
+                    errors: errors
+                };
+            }
+
+            return {
+                status: 200,
+                success: true,
+                message: "Thank you! Your message has been sent successfully."
+            };
+        }
+
+        /**
+         * -----------------------------------------------------------------
+         * 2. FRONTEND CLIENT APPLICATION LOGIC
+         * -----------------------------------------------------------------
+         */
+        const form = document.getElementById('contactForm');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const messageInput = document.getElementById('message');
+
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btn-text');
+        const btnIcon = document.getElementById('btn-icon');
+        const btnSpinner = document.getElementById('btn-spinner');
+
+        const responseBanner = document.getElementById('response-banner');
+        const responseTitle = document.getElementById('response-title');
+        const responseMessageList = document.getElementById('response-message-list');
+        const responseIcon = document.getElementById('response-icon');
+
+        // Clear errors and input highlighting
+        function clearErrors() {
+            // Hide field-level errors
+            ['name', 'email', 'message'].forEach(field => {
+                const errorElement = document.getElementById(`error-${field}`);
+                const inputElement = document.getElementById(field);
+                
+                errorElement.classList.add('hidden');
+                errorElement.querySelector('.error-text').textContent = '';
+                
+                inputElement.classList.remove('border-rose-500', 'focus:ring-rose-500', 'focus:border-rose-500');
+                inputElement.classList.add('border-slate-300', 'focus:ring-indigo-500', 'focus:border-indigo-500');
+            });
+
+            // Reset top response banner
+            responseBanner.classList.add('hidden');
+            responseBanner.classList.remove('bg-rose-50', 'border-rose-200', 'text-rose-800', 'bg-emerald-50', 'border-emerald-200', 'text-emerald-800');
+            responseMessageList.innerHTML = '';
+        }
+
+        // Display validation errors returned by server
+        function displayServerErrors(errors, mainMessage) {
+            responseBanner.classList.remove('hidden');
+            responseBanner.classList.add('bg-rose-50', 'border-rose-200', 'text-rose-800');
+            responseIcon.innerHTML = `<i data-lucide="alert-octagon" class="w-5 h-5 text-rose-600"></i>`;
+            responseTitle.textContent = mainMessage;
+
+            // Highlight specific input fields and list messages
+            Object.keys(errors).forEach(field => {
+                const errorMessage = errors[field];
+                
+                // Show field error text under input
+                const errorElement = document.getElementById(`error-${field}`);
+                const inputElement = document.getElementById(field);
+                
+                if (errorElement && inputElement) {
+                    errorElement.classList.remove('hidden');
+                    errorElement.querySelector('.error-text').textContent = errorMessage;
+
+                    inputElement.classList.remove('border-slate-300', 'focus:ring-indigo-500', 'focus:border-indigo-500');
+                    inputElement.classList.add('border-rose-500', 'focus:ring-rose-500', 'focus:border-rose-500');
+                }
+
+                // Add to banner message list
+                const li = document.createElement('li');
+                li.textContent = errorMessage;
+                responseMessageList.appendChild(li);
+            });
+
+            // Refresh Lucide icons
+            lucide.createIcons();
+        }
+
+        // Display success state after server approval
+        function displaySuccess(message) {
+            responseBanner.classList.remove('hidden');
+            responseBanner.classList.add('bg-emerald-50', 'border-emerald-200', 'text-emerald-800');
+            responseIcon.innerHTML = `<i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600"></i>`;
+            responseTitle.textContent = "Success!";
+            
+            const li = document.createElement('li');
+            li.textContent = message;
+            responseMessageList.appendChild(li);
+
+            // Re-render icons
+            lucide.createIcons();
+        }
+
+        // Toggle Loading Button State
+        function setLoading(isLoading) {
+            if (isLoading) {
+                submitBtn.disabled = true;
+                btnText.textContent = 'Processing...';
+                btnIcon.classList.add('hidden');
+                btnSpinner.classList.remove('hidden');
+            } else {
+                submitBtn.disabled = false;
+                btnText.textContent = 'Send Message';
+                btnIcon.classList.remove('hidden');
+                btnSpinner.classList.add('hidden');
+            }
+        }
+
+        // Form Submit Event Handler
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            clearErrors();
+            setLoading(true);
+
+            // Collect form payload
+            const payload = {
+                name: nameInput.value,
+                email: emailInput.value,
+                message: messageInput.value
+            };
+
+            try {
+                // Call simulated server-side API endpoint
+                const response = await mockServerContactEndpoint(payload);
+
+                if (!response.success) {
+                    // Server returned validation errors
+                    displayServerErrors(response.errors, response.message);
+                } else {
+                    // Server approved submission
+                    displaySuccess(response.message);
+                    form.reset(); // Clear input fields
+                }
+            } catch (err) {
+                // Fallback for unexpected system errors
+                displayServerErrors(
+                    { system: "An unexpected error occurred while processing your request." },
+                    "Server Error"
+                );
+            } finally {
+                setLoading(false);
+            }
+        });
+    </script>
+</body>
+</html>

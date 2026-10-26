@@ -98,8 +98,8 @@ in the local part and domain labels beginning or ending with hyphens.
 - [Comparison write-up](docs/week02-tool-comparison.md)
 - [Original Codex prompt and recovered output](experiments/week02/codex/README.md)
 - [Supplied three-code comparison report](docs/week02-comparison-report.md)
-- [Claude source evidence still needed](experiments/week02/claude/README.md)
-- [Gemini source evidence still needed](experiments/week02/gemini/README.md)
+- [Claude original prompt and code](experiments/week02/claude/README.md)
+- [Gemini original prompt and code](experiments/week02/gemini/README.md)
 - [Selected implementation test report](docs/week02-selected-tests.txt)
 - [Recovered snapshot test report](docs/week02-snapshot-tests.txt)
 
@@ -107,5 +107,6 @@ The recovered experiment intentionally retains its old email-validator requireme
 as evidence of the mismatch. The runnable application at the repository root does
 not depend on it. The supplied review of ChatGPT, Claude and Gemini is recorded with
 its scores and verification limits. The exact prompts for all three assistants are
-saved. Original Claude/Gemini source outputs still need to be archived; their reported
-results have not been independently rerun here. The Block B forum post is not yet done.
+saved, and the original Claude/Gemini code is archived unchanged. Both JavaScript
+sources passed syntax checks, but the evaluator's full runtime results have not been
+independently rerun here. The Block B forum post is not yet done.

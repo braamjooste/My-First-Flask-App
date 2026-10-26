@@ -1,10 +1,9 @@
-# Comparison evidence update
+# Comparison evidence archived
 
-The user confirms using Claude and Gemini and has supplied a three-code comparison
-report. Exact prompts for all three assistants are now saved. The original Claude
-and Gemini source outputs are still missing from this repository; save them in
-experiments/week02/claude/ and experiments/week02/gemini/.
+Exact prompts for all three assistants and the supplied original Claude/Gemini code
+are now saved in the named experiment folders. The comparison write-up records scores,
+evidence, verification limits and a reasoned choice of the revised Flask application.
+No missing first-attempt history or runtime success has been invented.
 
-See docs/week02-tool-comparison.md for current scores, attributed findings, verified
-checks and remaining coursework. The user confirms that the Block B forum post is
-not yet done. No missing source or first-attempt outcomes have been invented.
+See docs/week02-tool-comparison.md. The Block B forum post remains outstanding;
+the separate Block A Week 1 prompt-rerun exercise remains unconfirmed.
