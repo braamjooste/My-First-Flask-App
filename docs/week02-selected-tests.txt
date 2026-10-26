@@ -1,0 +1,18 @@
+Executed 26 October 2026 (Europe/Dublin).
+Selected integrated app
+Command: python -W error::ResourceWarning -m unittest discover -s tests -v
+
+test_empty_and_whitespace_submissions (test_app.ContactTests.test_empty_and_whitespace_submissions) ... ok
+test_form_loads (test_app.ContactTests.test_form_loads) ... ok
+test_invalid_submission_preserves_and_escapes_input (test_app.ContactTests.test_invalid_submission_preserves_and_escapes_input) ... ok
+test_limits_are_checked_on_server (test_app.ContactTests.test_limits_are_checked_on_server) ... ok
+test_long_invalid_message_is_preserved (test_app.ContactTests.test_long_invalid_message_is_preserved) ... ok
+test_missing_and_malformed_email (test_app.ContactTests.test_missing_and_malformed_email) ... ok
+test_script_in_message_is_escaped_on_validation_error (test_app.ContactTests.test_script_in_message_is_escaped_on_validation_error) ... ok
+test_script_in_message_is_not_rendered_on_success (test_app.ContactTests.test_script_in_message_is_not_rendered_on_success) ... ok
+test_valid_submission_redirects_without_storing_values (test_app.ContactTests.test_valid_submission_redirects_without_storing_values) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.106s
+
+OK

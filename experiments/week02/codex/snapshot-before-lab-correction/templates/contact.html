@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact us</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="card">
+    <p class="eyebrow">LET’S TALK</p>
+    <h1>Contact us</h1>
+    <p class="intro">Have a question or something to share? Fill in the form below.</p>
+
+    {% if errors %}
+      <div class="error-summary" role="alert">Please check the highlighted fields and try again.</div>
+    {% endif %}
+
+    <form method="post" action="{{ url_for('contact') }}" novalidate>
+      <p class="hint">All fields are required.</p>
+      <div class="field">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" autocomplete="name" required maxlength="100"
+               value="{{ values.name }}" {% if errors.name %}aria-invalid="true" aria-describedby="name-error"{% endif %}>
+        {% if errors.name %}<p class="error" id="name-error">{{ errors.name }}</p>{% endif %}
+      </div>
+      <div class="field">
+        <label for="email">Email address</label>
+        <input id="email" name="email" type="email" autocomplete="email" required maxlength="254"
+               value="{{ values.email }}" {% if errors.email %}aria-invalid="true" aria-describedby="email-error"{% endif %}>
+        {% if errors.email %}<p class="error" id="email-error">{{ errors.email }}</p>{% endif %}
+      </div>
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="6" required maxlength="2000"
+                  aria-describedby="message-hint{% if errors.message %} message-error{% endif %}"
+                  {% if errors.message %}aria-invalid="true"{% endif %}>
+{{ values.message }}</textarea>
+        <p class="hint" id="message-hint">Up to 2,000 characters.</p>
+        {% if errors.message %}<p class="error" id="message-error">{{ errors.message }}</p>{% endif %}
+      </div>
+      <button type="submit">Submit message <span aria-hidden="true">&rarr;</span></button>
+    </form>
+    <p class="demo-note">Coursework demo · Messages are validated but are not saved or emailed.</p>
+  </main>
+</body>
+</html>
