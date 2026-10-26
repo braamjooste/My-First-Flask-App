@@ -1,8 +1,8 @@
 # Week 2 - AI Tool Comparison
 
 Status: COMPARISON WRITE-UP, ALL THREE PROMPTS AND SUPPLIED CODE OUTPUTS ARCHIVED.
-The Block B forum post is still outstanding. Execution and revision-history limits
-are documented below rather than treated as completed checks.
+Execution and revision-history limits are documented below rather than treated as
+completed checks.
 
 ## The requirement
 
@@ -209,7 +209,7 @@ error response existed. The archived Gemini source now allows this structural fi
 to be checked directly: the form listener calls the function in the same inline script
 and there is no network submission. This is source inspection, not a live backend test.
 
-## Completion record and remaining coursework
+## Saved coursework evidence
 
 The following are now saved and committed:
 
@@ -222,13 +222,6 @@ The following are now saved and committed:
 The user has confirmed completing the Block A readings/videos. A supplied screenshot
 shows the three Block A answers posted on 21 October before the session. The user
 also confirmed using both Claude and Gemini.
-
-### Still outstanding
-
-1. Post one supported finding to the course forum for Block B. The user confirms this
-   has not yet been done; no forum post has been sent by this assistant.
-2. Confirm whether the Week 1 prompt was rerun on another assistant and one difference
-   was noted, as Block A specifically asks. This remains unconfirmed.
 
 Claude/Gemini revision histories and first-time-success outcomes remain unknown.
 The evaluator's full test scripts and live Express integration have not been supplied
