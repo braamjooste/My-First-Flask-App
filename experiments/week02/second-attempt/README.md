@@ -1,11 +1,9 @@
-# Second attempt: unfinished
+# Comparison evidence update
 
-No second assistant output or second prompting attempt has been supplied.
-No prompt, generated code, score, or test result is claimed for this attempt.
+The user confirms using Claude and Gemini and has supplied a three-code comparison
+report. The earlier note that no comparison findings were available is superseded.
+The exact original prompts and raw source outputs are still missing from this
+repository. Save them in experiments/week02/claude/ and experiments/week02/gemini/.
 
-To finish the lab, use another assistant or the same assistant with a different
-prompting strategy. Save the actual prompt verbatim and the complete generated
-files here before editing them. Run that version, record whether it works
-unmodified, and add evidence-based scores to the comparison document.
-
-This folder records an outstanding task; it is not evidence of a completed comparison.
+See docs/week02-tool-comparison.md for current scores, attributed findings, verified
+checks and remaining coursework. No missing prompts or source have been invented.

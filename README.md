@@ -93,15 +93,18 @@ The regex is a practical lab format check, not a complete implementation of ever
 unusual email syntax. It rejects missing addresses, missing dots, consecutive dots
 in the local part and domain labels beginning or ending with hyphens.
 
-### Coursework evidence - comparison unfinished
+### Coursework evidence - comparison findings recorded
 
 - [Comparison write-up](docs/week02-tool-comparison.md)
 - [Original Codex prompt and recovered output](experiments/week02/codex/README.md)
-- [Second attempt still needed](experiments/week02/second-attempt/README.md)
+- [Supplied three-code comparison report](docs/week02-comparison-report.md)
+- [Claude source evidence still needed](experiments/week02/claude/README.md)
+- [Gemini source evidence still needed](experiments/week02/gemini/README.md)
 - [Selected implementation test report](docs/week02-selected-tests.txt)
 - [Recovered snapshot test report](docs/week02-snapshot-tests.txt)
 
 The recovered experiment intentionally retains its old email-validator requirement
 as evidence of the mismatch. The runnable application at the repository root does
-not depend on it. A second assistant/prompt result and comparative scores are not
-claimed; those remain to be supplied.
+not depend on it. The supplied review of ChatGPT, Claude and Gemini is recorded with
+its scores and verification limits. Exact Claude/Gemini prompts and raw outputs still
+need to be archived; their reported results have not been independently rerun here.
