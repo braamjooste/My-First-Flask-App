@@ -1,7 +1,7 @@
 # Week 2 - AI Tool Comparison
 
-Status: COMPARISON FINDINGS RECORDED; original Claude/Gemini prompts and code files
-still need to be archived before the evidence record is complete.
+Status: COMPARISON FINDINGS AND ALL THREE PROMPTS RECORDED; original Claude/Gemini
+code files still need to be archived before the evidence record is complete.
 
 ## The requirement
 
@@ -19,8 +19,8 @@ comprehensive than the prompts used for the other two assistants.
 
 The user supplied a separate comparison report on 26 October 2026. It is preserved
 [verbatim here](week02-comparison-report.md). Its evaluator reportedly inspected all
-three implementations, but the raw Claude/Gemini source and exact generation prompts
-have not been provided to this repository. Findings about those two implementations
+three implementations. The raw Claude/Gemini source has not yet been provided to this
+repository. The user has now supplied the exact shared prompt used for both tools. Findings about those two implementations
 below are attributed to that report, not independently reproduced here.
 
 ChatGPT's selected implementation is the current revised application at the repository
@@ -71,15 +71,24 @@ If I later provide an error message or failed test, use that feedback to refine 
 This prompt did not state the session sheet's Flask-and-standard-library-only
 restriction; that constraint was introduced later and the dependency was corrected.
 
-### Claude
+### Claude and Gemini - same class-example prompt
 
-The user reports using a less comprehensive prompt. The exact wording is not yet
-available. Save it verbatim with the original output in experiments/week02/claude/.
+The user confirmed that both assistants received the following prompt. Its wording,
+including "service side", is preserved verbatim. It is also saved separately in
+[Claude's prompt file](../experiments/week02/claude/prompt.txt) and
+[Gemini's prompt file](../experiments/week02/gemini/prompt.txt).
 
-### Gemini
+```text
+please create a Web application. A contact form that’s rendered at/contact I want fields for name email and message I want you to validate the email address is a valid format. Validation needs to be done service side. If any field is empty I want you to reject it and return giving the error message as to what is missing. If it’s successful then display a confirmation message. No need to store any data at the moment.
+```
 
-The user reports using a less comprehensive prompt. The exact wording is not yet
-available. Save it verbatim with the original output in experiments/week02/gemini/.
+This prompt asks for a web application and validation "service side", but it does not
+name Flask or Python, specify HTTP 400, require a separate confirmation page, or state
+the Flask-and-standard-library-only restriction. Express therefore misses the common
+Flask lab target without necessarily contradicting the actual prompt given to Claude.
+The review's browser-only simulation would still not meet the likely intended
+server-side validation request; the original wording and missing raw source limit
+that conclusion. Preserve the original generated code before making corrections.
 
 Different prompts and revision histories prevent a controlled comparison of assistant
 quality. The present comparison evaluates the supplied implementations against a common
@@ -190,15 +199,16 @@ finding as personally reproduced.
 
 ## Remaining evidence and coursework
 
-1. Save the exact Claude and Gemini prompts and their unmodified generated code in
-   the named experiment folders, preserving any separate revised versions.
+1. Save the unmodified Claude and Gemini generated code in the named experiment
+   folders, preserving any separate revised versions. Their exact prompts are now saved.
 2. Record first-attempt outcomes and revision histories where known; do not reconstruct
    missing history as fact.
 3. Add the evaluator's test scripts/results if available, or independently reproduce
    the third-party checks when the actual source is supplied.
 4. Confirm the Week 1 prompt rerun/difference required by Block A; using three assistants
    alone does not establish that this specific exercise was completed.
-5. Post a supported difference to the course forum for Block B and confirm it was posted.
+5. Post a supported difference to the course forum for Block B. The user has confirmed
+   that this post is not yet done.
 
 The user has confirmed completing the Block A readings/videos. A supplied screenshot
 also shows the three Block A answers posted on 21 October before the session.

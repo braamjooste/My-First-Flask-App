@@ -106,5 +106,6 @@ in the local part and domain labels beginning or ending with hyphens.
 The recovered experiment intentionally retains its old email-validator requirement
 as evidence of the mismatch. The runnable application at the repository root does
 not depend on it. The supplied review of ChatGPT, Claude and Gemini is recorded with
-its scores and verification limits. Exact Claude/Gemini prompts and raw outputs still
-need to be archived; their reported results have not been independently rerun here.
+its scores and verification limits. The exact prompts for all three assistants are
+saved. Original Claude/Gemini source outputs still need to be archived; their reported
+results have not been independently rerun here. The Block B forum post is not yet done.
